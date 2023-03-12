@@ -11,6 +11,17 @@
     justify-content: center;
     align-items: center;
 }
+.StudentCard__letter{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 100%;
+    height: 100px;
+    width: 100px;
+    font-weight: 600;
+    font-size: 40px;
+}
 
 .StudentCard__avatar img {
     width: 100px;
@@ -30,4 +41,22 @@
 
 .StudentCard__info li {
     list-style-type: none;
+}
+
+.F{
+    color : red;
+}
+
+.D{
+    color : orange;
+}
+
+.C {
+    color : yellow;
+}
+.B{
+    color : rgb(190, 205, 50);
+}
+.A{
+    color : limegreen;
 }

@@ -1,7 +1,8 @@
 
-import { FaMinus, FaPlus } from 'react-icons/fa';
 import { useState } from 'react';
 import './StudentCard.css';
+import { FaMinus } from 'react-icons/fa';
+import { FaPlus } from 'react-icons/fa';
 
 
 const StudentCard = ({ student, expanded, setExpanded, onClick }) => {

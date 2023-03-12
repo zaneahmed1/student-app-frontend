@@ -61,7 +61,7 @@ const StudentCard = ({ student, expanded, setExpanded, onClick }) => {
         </button>
       </div>
     </div>
-  );
+  );//
 };
 
 export default StudentCard;

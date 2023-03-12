@@ -1,9 +1,11 @@
 
 import { FaMinus, FaPlus } from 'react-icons/fa';
-
+import { useState } from 'react';
 import './StudentCard.css';
 
 const StudentCard = ({ student, expanded, setExpanded, onClick }) => {
+
+  const [showImage, setShowImage] = useState(true)
 
 
   const { email, company, firstName, lastName, pic, grades, id, skill } =
@@ -23,13 +25,31 @@ const StudentCard = ({ student, expanded, setExpanded, onClick }) => {
   // Divide total by number of grades and assign to a var
   const average = total / numericGrades.length;
 
+  let letterGrade = ""
+
+  if(average < 60){
+    letterGrade = "F"
+  } else if(average < 70){
+    letterGrade = "D"
+  } else if(average < 80){
+    letterGrade = "C"
+  } else if(average < 90){
+    letterGrade = "B"
+  } else if(letterGrade < 100){
+    letterGrade = "A"
+  }
+
+  const handleToggleImage = () => {
+    setShowImage(!showImage)
+  }
+
   console.log(
     `<StudentCard /> rendered name=${firstName} expanded=${expanded}`
   );
   return (
     <div className="StudentCard" key={id}>
-      <div className="StudentCard__avatar">
-        <img src={pic} alt={`${firstName} ${lastName}`} />
+      <div className="StudentCard__avatar" onClick={handleToggleImage}>
+       {showImage ? <img src={pic} alt={`${firstName} ${lastName}`} /> : <div>{letterGrade}</div>}
       </div>
       <div className="StudentCard__info">
         <h1>

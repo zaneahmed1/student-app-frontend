@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import StudentCard from '../StudentCard/StudentCard';
+import TextField from '@mui/material/TextField';
+import { Button } from '@mui/material';
 
 import './StudentList.css';
 
@@ -7,6 +9,7 @@ const StudentList = ({ studentData }) => {
   // When I type in the input, I should see filtered results by name
   const [searchInput, setSearchInput] = useState('');
   const [expanded, setExpanded] = useState([]);
+
 
 const handleToggleExpanded = (id) => {
   if(!expanded.includes(id)){
@@ -47,12 +50,15 @@ const handleToggleExpanded = (id) => {
       const fullName = `${firstName} ${lastName}`.toLowerCase();
 
       return fullName.includes(searchInput.toLowerCase());
+
     });
   }
   /* If dataToDisplay.length === 0, 
   show "no results for {searchInput}" 
   Else: render student cards 
   */
+
+
   const renderContent = () => {
     let contentClassName = 'StudentList__content';
 
@@ -72,19 +78,26 @@ const handleToggleExpanded = (id) => {
     }
   };
 
+
+
   console.log(`<StudentList /> rendered! searchInput = ${searchInput}`);
   return (
     <div className="StudentList">
-      <div className="StudentList__input">
-        <input
+      <div className="StudentList__search">
+        <div className="StudentList__input">
+        <TextField 
           value={searchInput}
           type="text"
           placeholder="Search by name"
           onChange={handleChange}
+          className="input"
         />
-        <button onClick={handleExpandAll}>Expand All</button>
-        <button onClick={handleCollapseAll}>Collapse All</button>
+        </div>
+        <div className="StudentList__buttons">
+        <Button variant="outlined" onClick={handleExpandAll}>Expand All</Button>
+        <Button variant="outlined" onClick={handleCollapseAll}>Collapse All</Button>
       </div> 
+        </div>
       {renderContent()}
     </div>
   );
